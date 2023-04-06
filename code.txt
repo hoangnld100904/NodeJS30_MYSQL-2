@@ -181,3 +181,7 @@ WHERE users.user_id NOT IN
 UNION SELECT rate_res.user_id FROM rate_res 
 UNION SELECT like_res.user_id FROM like_res);
 -- Tính trung bình subfood của một food
+select avg(subfood_count) from(
+select foods.food_name as 'Ten mon an', count(sub_food.food_id) as subfood_count from foods
+join sub_food on sub_food.food_id = foods.food_id
+group by foods.food_name) as subfood_count;
